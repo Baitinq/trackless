@@ -1,0 +1,10 @@
+#!/bin/bash
+
+IFACES=$(ip -o link show | awk -F': ' '{print $2}')
+for IFACE in $IFACES; do
+    if [ $IFACE != "lo" ]; then
+        ip link set $IFACE down &>"/dev/null"
+        macchanger -a $IFACE &>"/dev/null"
+        ip link set $IFACE up &>"/dev/null"
+    fi
+done
