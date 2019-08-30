@@ -2,8 +2,8 @@
 Description=Change network interfaces mac to a random address.
 Wants=network-pre.target
 Before=network-pre.target
-BindsTo=sys-subsystem-net-devices-wlan0.device
-After=sys-subsystem-net-devices-wlan0.device
+BindsTo=sys-subsystem-net-devices-%i.device
+After=sys-subsystem-net-devices-%i.device
 
 [Service]
 Type=oneshot
